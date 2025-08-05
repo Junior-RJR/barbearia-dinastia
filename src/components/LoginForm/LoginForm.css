@@ -1,0 +1,91 @@
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dinastia-dark);
+  padding: 16px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 448px; /* max-w-md */
+  background-color: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid var(--dinastia-gold);
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  gap: 16px;
+}
+
+.login-logo {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 16px;
+}
+
+.login-title {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: bold;
+  color: var(--dinastia-gold);
+}
+
+.login-description {
+  color: var(--muted-text-color);
+}
+
+.login-content {
+  padding: 24px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-input {
+  background-color: var(--input-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: var(--dinastia-gold);
+}
+
+.login-error {
+  color: #ef4444; /* Red for destructive */
+  font-size: 0.875rem; /* text-sm */
+}
+
+.login-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: bold;
+  color: var(--dinastia-dark);
+  background-color: var(--dinastia-gold);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-button:hover {
+  background-color: var(--button-hover-gold);
+}

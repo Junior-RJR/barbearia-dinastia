@@ -1,0 +1,71 @@
+.sidebar-container {
+  display: none; /* hidden */
+  border-right: 1px solid var(--border-color);
+  background-color: var(--dinastia-dark);
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .sidebar-container {
+    display: block; /* md:block */
+    width: 220px; /* md:w-[220px] */
+  }
+}
+
+@media (min-width: 1024px) {
+  .sidebar-container {
+    width: 280px; /* lg:w-[280px] */
+  }
+}
+
+.sidebar-content {
+  display: flex;
+  height: 100%;
+  max-height: 100vh;
+  flex-direction: column;
+  gap: 8px; /* gap-2 */
+}
+
+.sidebar-nav {
+  flex: 1; /* flex-1 */
+  display: grid;
+  align-items: flex-start;
+  padding: 16px 8px; /* px-2 py-4 */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500;
+}
+
+@media (min-width: 1024px) {
+  .sidebar-nav {
+    padding: 16px; /* lg:px-4 */
+  }
+}
+
+.sidebar-section-title {
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--muted-text-color);
+  margin-bottom: 8px; /* mb-2 */
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* gap-3 */
+  border-radius: 6px; /* rounded-lg */
+  padding: 8px 12px; /* px-3 py-2 */
+  color: var(--muted-text-color);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.sidebar-nav-item:hover {
+  color: var(--dinastia-gold);
+  background-color: rgba(212, 175, 55, 0.1); /* dinastia-gold/10 */
+}
+
+.sidebar-nav-item .icon {
+  width: 16px;
+  height: 16px;
+}

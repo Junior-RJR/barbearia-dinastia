@@ -1,0 +1,216 @@
+.schedule-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* gap-4 */
+  padding: 16px; /* p-4 */
+  background-color: var(--dinastia-dark);
+  color: var(--text-color);
+}
+
+@media (min-width: 768px) {
+  .schedule-container {
+    gap: 32px; /* md:gap-8 */
+    padding: 24px; /* md:p-6 */
+  }
+}
+
+.schedule-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px; /* gap-2 */
+}
+
+.schedule-title {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: bold;
+}
+
+.schedule-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* gap-2 */
+  flex-wrap: wrap;
+}
+
+.schedule-button-outline {
+  background-color: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem; /* text-sm */
+}
+
+.schedule-button-outline:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* accent */
+  color: var(--text-color);
+}
+
+.schedule-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.schedule-icon-mr {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.schedule-date {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600;
+}
+
+.schedule-grid-wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px; /* gap-4 */
+  overflow-x: auto;
+}
+
+.schedule-time-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 60px;
+}
+
+.schedule-time-header {
+  height: 48px; /* h-12 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500;
+  color: var(--muted-text-color);
+}
+
+.schedule-time-slot {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem; /* text-xs */
+  color: var(--muted-text-color);
+  border-bottom: 1px solid rgba(var(--border-color), 0.5); /* border-border/50 */
+}
+
+.schedule-barbers-grid {
+  display: grid;
+}
+
+.schedule-barber-column {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(var(--border-color), 0.5); /* border-border/50 */
+}
+
+.schedule-barber-header {
+  height: 48px; /* h-12 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 600;
+  background-color: rgba(212, 175, 55, 0.2); /* dinastia-gold/20 */
+  color: var(--dinastia-gold);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.5); /* border-dinastia-gold/50 */
+}
+
+.schedule-barber-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px; /* rounded-full */
+  margin-right: 8px; /* mr-2 */
+}
+
+.schedule-cell {
+  height: 40px;
+  border-bottom: 1px solid rgba(var(--border-color), 0.5); /* border-border/50 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem; /* text-xs */
+  color: var(--muted-text-color);
+  padding: 4px; /* p-1 */
+  position: relative;
+}
+
+.schedule-appointment {
+  position: absolute;
+  inset: 0;
+  color: white;
+  padding: 4px; /* p-1 */
+  border-radius: 6px; /* rounded-md */
+  overflow: hidden;
+  z-index: 1;
+}
+
+.schedule-appointment.bg-blue {
+  background-color: #2563eb; /* blue-600 */
+}
+
+.schedule-appointment.bg-green {
+  background-color: #16a34a; /* green-600 */
+}
+
+.schedule-appointment.bg-gray {
+  background-color: #4b5563; /* gray-600 */
+}
+
+.schedule-appointment-text-bold {
+  font-weight: 600;
+  font-size: 0.75rem; /* text-xs */
+  line-height: 1.25;
+}
+
+.schedule-appointment-text {
+  font-size: 0.625rem; /* text-[10px] */
+  line-height: 1.25;
+}
+
+.schedule-star {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: #fde047; /* yellow-300 */
+  font-size: 0.75rem; /* text-xs */
+}
+
+.schedule-lunch-break {
+  font-size: 0.75rem; /* text-xs */
+  text-align: center;
+}
+
+.schedule-blocked {
+  font-size: 0.75rem; /* text-xs */
+  text-align: center;
+}
+
+.bg-light-gray {
+  background-color: #e5e7eb; /* gray-200 */
+  color: #333; /* Darker text for light background */
+}
+
+.bg-light-red {
+  background-color: #fecaca; /* red-200 */
+  color: #333; /* Darker text for light background */
+}
+
+/* Dark mode adjustments for light backgrounds */
+@media (prefers-color-scheme: dark) {
+  .bg-light-gray {
+    background-color: #374151; /* gray-700 */
+    color: var(--text-color);
+  }
+  .bg-light-red {
+    background-color: #450a0a; /* red-950 */
+    color: var(--text-color);
+  }
+}

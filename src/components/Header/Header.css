@@ -1,0 +1,315 @@
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  height: 64px; /* h-16 */
+  align-items: center;
+  gap: 16px; /* gap-4 */
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--dinastia-dark);
+  padding: 0 16px; /* px-4 */
+  z-index: 50;
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 0 24px; /* md:px-6 */
+  }
+}
+
+.header-nav-desktop {
+  display: none; /* hidden */
+  flex-direction: column;
+  gap: 24px; /* gap-6 */
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .header-nav-desktop {
+    display: flex; /* md:flex */
+    flex-direction: row; /* md:flex-row */
+    align-items: center; /* md:items-center */
+    gap: 20px; /* md:gap-5 */
+    font-size: 0.875rem; /* md:text-sm */
+  }
+}
+
+@media (min-width: 1024px) {
+  .header-nav-desktop {
+    gap: 24px; /* lg:gap-6 */
+  }
+}
+
+.header-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* gap-2 */
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600;
+  color: var(--dinastia-gold);
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .header-logo-link {
+    font-size: 1rem; /* md:text-base */
+  }
+}
+
+.header-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px; /* rounded-full */
+}
+
+.header-nav-item {
+  color: var(--muted-text-color);
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.header-nav-item:hover {
+  color: var(--dinastia-gold);
+}
+
+.header-mobile-menu {
+  display: block; /* md:hidden */
+}
+
+@media (min-width: 768px) {
+  .header-mobile-menu {
+    display: none; /* md:hidden */
+  }
+}
+
+.header-mobile-trigger {
+  background-color: var(--dinastia-dark);
+  color: var(--dinastia-gold);
+  border: 1px solid var(--dinastia-gold);
+  padding: 8px; /* size="icon" */
+  border-radius: 6px; /* shrink-0 */
+  cursor: pointer;
+}
+
+.header-mobile-trigger .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.header-mobile-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px; /* Adjust as needed */
+  height: 100%;
+  background-color: var(--dinastia-dark);
+  color: var(--dinastia-gold);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 100; /* Above other content */
+}
+
+.header-mobile-nav {
+  display: grid;
+  gap: 8px; /* gap-2 */
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 500;
+}
+
+.header-mobile-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* gap-4 */
+  border-radius: 6px; /* rounded-xl */
+  padding: 8px 12px; /* px-3 py-2 */
+  color: var(--muted-text-color);
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.header-mobile-nav-item:hover {
+  color: var(--dinastia-gold);
+}
+
+.header-mobile-nav-item .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.header-actions {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 16px; /* gap-4 */
+  margin-left: auto; /* ml-auto */
+}
+
+@media (min-width: 768px) {
+  .header-actions {
+    gap: 8px; /* md:gap-2 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .header-actions {
+    gap: 16px; /* lg:gap-4 */
+  }
+}
+
+.header-search-form {
+  flex: 1; /* flex-1 */
+}
+
+@media (min-width: 640px) {
+  .header-search-form {
+    flex: initial; /* sm:flex-initial */
+  }
+}
+
+.header-search-wrapper {
+  position: relative;
+}
+
+.header-search-icon {
+  position: absolute;
+  left: 10px; /* left-2.5 */
+  top: 10px; /* top-2.5 */
+  height: 16px; /* h-4 */
+  width: 16px; /* w-4 */
+  color: var(--muted-text-color);
+}
+
+.header-search-input {
+  padding-left: 32px; /* pl-8 */
+  background-color: var(--input-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .header-search-input {
+    width: 300px; /* sm:w-[300px] */
+  }
+}
+
+@media (min-width: 768px) {
+  .header-search-input {
+    width: 200px; /* md:w-[200px] */
+  }
+}
+
+@media (min-width: 1024px) {
+  .header-search-input {
+    width: 300px; /* lg:w-[300px] */
+  }
+}
+
+.header-search-input:focus {
+  outline: none;
+  border-color: var(--dinastia-gold);
+}
+
+.header-icon-button {
+  background: none;
+  border: none;
+  color: var(--dinastia-gold);
+  padding: 8px; /* size="icon" */
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.header-icon-button:hover {
+  background-color: rgba(212, 175, 55, 0.2); /* dinastia-gold/20 */
+}
+
+.header-icon-button .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.header-dropdown {
+  position: relative;
+}
+
+.header-dropdown-trigger {
+  background-color: var(--dinastia-gold);
+  color: var(--dinastia-dark);
+  border: none;
+  padding: 0;
+  border-radius: 9999px; /* rounded-full */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-dropdown-trigger:hover {
+  background-color: var(--button-hover-gold);
+}
+
+.header-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px; /* rounded-full */
+  object-fit: cover;
+}
+
+.header-dropdown-content {
+  position: absolute;
+  right: 0;
+  top: 100%; /* Position below trigger */
+  margin-top: 8px; /* Space from trigger */
+  background-color: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid var(--dinastia-gold);
+  border-radius: 6px;
+  min-width: 160px; /* Adjust as needed */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 60; /* Above header but below mobile menu */
+  padding: 8px 0;
+}
+
+.header-dropdown-label {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.header-dropdown-separator {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 4px 0;
+}
+
+.header-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.header-dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* accent */
+  color: var(--text-color);
+}
+
+.header-dropdown-item-logout:hover {
+  background-color: #ef4444; /* destructive */
+  color: white;
+}
