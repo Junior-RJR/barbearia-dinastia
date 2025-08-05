@@ -25,24 +25,52 @@ const SearchIcon = () => (
 
 function SubscriptionsView() {
   const [searchTerm, setSearchTerm] = useState("")
+  const [filterStatus, setFilterStatus] = useState("all") // 'all', 'paid', 'overdue'
 
-  const filteredClients = MOCK_CLIENTS.filter(
-    (client) => client.name.toLowerCase().includes(searchTerm.toLowerCase()) && client.subscription,
-  )
+  const filteredClients = MOCK_CLIENTS.filter((client) => {
+    const matchesSearch = client.name.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesSubscription = client.subscription
+    const matchesStatus =
+      filterStatus === "all" || (client.subscriptionStatus && client.subscriptionStatus === filterStatus)
+
+    return matchesSearch && matchesSubscription && matchesStatus
+  })
 
   return (
     <div className="subscriptions-container">
       <div className="subscriptions-header">
         <h1 className="subscriptions-title">Clientes por Assinatura</h1>
-        <div className="subscriptions-search-wrapper">
-          <SearchIcon className="subscriptions-search-icon" />
-          <input
-            type="text"
-            placeholder="Buscar cliente..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="subscriptions-search-input"
-          />
+        <div className="subscriptions-controls">
+          <div className="subscriptions-search-wrapper">
+            <SearchIcon className="subscriptions-search-icon" />
+            <input
+              type="text"
+              placeholder="Buscar cliente..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="subscriptions-search-input"
+            />
+          </div>
+          <div className="subscriptions-filter-buttons">
+            <button
+              onClick={() => setFilterStatus("all")}
+              className={`subscriptions-filter-button ${filterStatus === "all" ? "active" : ""}`}
+            >
+              Todos
+            </button>
+            <button
+              onClick={() => setFilterStatus("paid")}
+              className={`subscriptions-filter-button ${filterStatus === "paid" ? "active" : ""}`}
+            >
+              Pagos
+            </button>
+            <button
+              onClick={() => setFilterStatus("overdue")}
+              className={`subscriptions-filter-button ${filterStatus === "overdue" ? "active" : ""}`}
+            >
+              Atrasados
+            </button>
+          </div>
         </div>
       </div>
 
@@ -60,6 +88,7 @@ function SubscriptionsView() {
                   <th className="subscriptions-table-head">Assinatura</th>
                   <th className="subscriptions-table-head">Valor Mensal</th>
                   <th className="subscriptions-table-head">Último Corte</th>
+                  <th className="subscriptions-table-head">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -76,11 +105,24 @@ function SubscriptionsView() {
                       </td>
                       <td>R$ {client.value.toFixed(2)}</td>
                       <td>{client.lastCut}</td>
+                      <td>
+                        {client.subscriptionStatus && client.subscription ? (
+                          <span className={`badge badge-${client.subscriptionStatus}`}>
+                            {client.subscriptionStatus === "paid"
+                              ? "Pago"
+                              : client.subscriptionStatus === "overdue"
+                                ? "Atrasado"
+                                : "N/A"}
+                          </span>
+                        ) : (
+                          <span className="badge badge-none">N/A</span>
+                        )}
+                      </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="4" className="subscriptions-no-data">
+                    <td colSpan="5" className="subscriptions-no-data">
                       Nenhum cliente com assinatura encontrado.
                     </td>
                   </tr>

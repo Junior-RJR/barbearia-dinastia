@@ -8,6 +8,8 @@
   --input-background: #3a3a3a;
   --button-hover-gold: #c0a030;
   --button-hover-dark: #0a0a0a;
+  --destructive-color: #ef4444; /* Red */
+  --success-color: #22c55e; /* Green */
 }
 
 body {
@@ -183,12 +185,27 @@ tr:hover {
 }
 
 .badge.active {
-  background-color: #22c55e; /* Green */
+  background-color: var(--success-color); /* Green */
   color: white;
 }
 
 .badge.inactive {
   background-color: #6b7280; /* Gray */
+  color: white;
+}
+
+.badge.paid {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.badge.overdue {
+  background-color: var(--destructive-color);
+  color: white;
+}
+
+.badge.none {
+  background-color: #6b7280;
   color: white;
 }
 
@@ -241,4 +258,25 @@ tr:hover {
   .lg-gap-6 {
     gap: 24px;
   }
+}
+
+/* Generic page container for new views */
+.page-container {
+  padding: 24px;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  margin: 16px; /* Add some margin for spacing */
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.page-description {
+  color: var(--muted-text-color);
+  margin-bottom: 16px;
 }

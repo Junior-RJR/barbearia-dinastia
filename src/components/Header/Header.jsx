@@ -3,7 +3,7 @@
 import { useState } from "react"
 import "./Header.css"
 import { getCurrentUser, logoutUser } from "../../lib/mock-data"
-import logoDinastia from "../../images/logo-dinastia.png";
+import logoDinastia from "../../images/logo-dinastia.png" // Import the image
 import userPlaceholder from "../../images/placeholder-user.png" // Import the image
 
 // Lucide React icons (simplified for pure React, usually imported directly)
@@ -131,7 +131,7 @@ function Header({ onNavigate, onLogout }) {
   return (
     <header className="header">
       <nav className="header-nav-desktop">
-        <a href="#" className="header-logo-link">
+        <a href="#" onClick={() => onNavigate("dashboard")} className="header-logo-link">
           <img src={logoDinastia || "/placeholder.svg"} alt="Barbearia Dinastia Logo" className="header-logo" />
           <span className="sr-only">Barbearia Dinastia</span>
         </a>
@@ -144,7 +144,7 @@ function Header({ onNavigate, onLogout }) {
         <a href="#" onClick={() => onNavigate("commissions")} className="header-nav-item">
           Comissões
         </a>
-        <a href="#" className="header-nav-item">
+        <a href="#" onClick={() => onNavigate("financial")} className="header-nav-item">
           Financeiro
         </a>
       </nav>
@@ -157,7 +157,7 @@ function Header({ onNavigate, onLogout }) {
         {isMobileMenuOpen && (
           <div className="header-mobile-content">
             <nav className="header-mobile-nav">
-              <a href="#" className="header-logo-link">
+              <a href="#" onClick={() => onNavigate("dashboard")} className="header-logo-link">
                 <img src={logoDinastia || "/placeholder.svg"} alt="Barbearia Dinastia Logo" className="header-logo" />
                 <span className="sr-only">Barbearia Dinastia</span>
               </a>
@@ -194,7 +194,14 @@ function Header({ onNavigate, onLogout }) {
                 <Package2Icon className="header-icon" />
                 Comissões
               </a>
-              <a href="#" className="header-mobile-nav-item">
+              <a
+                href="#"
+                onClick={() => {
+                  onNavigate("financial")
+                  setIsMobileMenuOpen(false)
+                }}
+                className="header-mobile-nav-item"
+              >
                 <Package2Icon className="header-icon" />
                 Financeiro
               </a>

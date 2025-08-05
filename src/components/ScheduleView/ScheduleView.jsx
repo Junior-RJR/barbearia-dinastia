@@ -1,5 +1,5 @@
 import "./ScheduleView.css"
-import { MOCK_APPOINTMENTS, MOCK_USERS } from "../../lib/mock-data"
+import { MOCK_APPOINTMENTS, MOCK_USERS, getServiceById } from "../../lib/mock-data"
 import userPlaceholder from "../../images/placeholder-user.png" // Import the image
 
 // Lucide React icons (simplified for pure React)
@@ -108,8 +108,18 @@ function ScheduleView() {
   })
 
   const getAppointmentForBarberAndTime = (barberName, time) => {
-    return MOCK_APPOINTMENTS.find((app) => app.barber === barberName && app.time === time && app.date === "2025-07-17")
+    const appointment = MOCK_APPOINTMENTS.find(
+      (app) => app.barber === barberName && app.time === time && app.date === "2025-07-17",
+    )
+    if (appointment) {
+      const service = getServiceById(appointment.serviceId)
+      return { ...appointment, serviceName: service?.name, duration: service?.duration }
+    }
+    return null
   }
+
+  // Keep track of occupied slots to prevent rendering multiple times for one appointment
+  const occupiedSlots = new Set()
 
   return (
     <div className="schedule-container">
@@ -141,7 +151,7 @@ function ScheduleView() {
       <div className="schedule-grid-wrapper">
         {/* Time Slots Column */}
         <div className="schedule-time-column">
-          <div className="schedule-time-header"></div>
+          <div className="schedule-time-header"></div> {/* Header empty space */}
           {timeSlots.map((time) => (
             <div key={time} className="schedule-time-slot">
               {time}
@@ -161,36 +171,42 @@ function ScheduleView() {
                 {barber}
               </div>
               {timeSlots.map((time) => {
+                const slotKey = `${barber}-${time}`
+                if (occupiedSlots.has(slotKey)) {
+                  return null // Skip rendering if this slot is part of an already rendered appointment
+                }
+
                 const appointment = getAppointmentForBarberAndTime(barber, time)
                 const isLunchBreak =
-                  (barber === "Wendel" && time === "13:00") || (barber === "Rique" && time === "13:00")
-                const isBlocked = (barber === "Wendel" && time === "13:10") || (barber === "Rique" && time === "13:10")
+                  (barber === "Wendel" && time === "13:00") || (barber === "Rique" && time === "13:00") // Mock lunch break
+                const isBlocked = (barber === "Wendel" && time === "13:10") || (barber === "Rique" && time === "13:10") // Mock blocked time
 
                 let cellContent = null
                 let cellClasses = "schedule-cell"
 
-                if (appointment) {
+                if (appointment && appointment.duration) {
                   const durationInSlots = appointment.duration / 10 // 10 minutes per slot
                   const backgroundColorClass =
                     barber === "Nicolas" ? "bg-blue" : barber === "Rique" ? "bg-green" : "bg-gray"
                   cellContent = (
                     <div
                       className={`schedule-appointment ${backgroundColorClass}`}
-                      style={{ height: `${durationInSlots * 40}px` }}
+                      style={{ height: `${durationInSlots * 40}px`, zIndex: 1 }}
                     >
                       <p className="schedule-appointment-text-bold">{appointment.client}</p>
                       <p className="schedule-appointment-text">{appointment.phone}</p>
-                      <p className="schedule-appointment-text">{appointment.service}</p>
+                      <p className="schedule-appointment-text">{appointment.serviceName}</p>
                       {(appointment.client === "GIOVANE SILVA" || appointment.client === "Ricardo Bruno") && (
                         <span className="schedule-star">⭐</span>
                       )}
                     </div>
                   )
-                  // To avoid rendering multiple cells for one appointment, we only render the first slot
+                  // Mark all slots covered by this appointment as occupied
                   const startIndex = timeSlots.indexOf(time)
-                  const appointmentStartTime = timeSlots.indexOf(appointment.time)
-                  if (startIndex > appointmentStartTime && startIndex < appointmentStartTime + durationInSlots) {
-                    return null // Skip rendering subsequent cells covered by the appointment
+                  for (let i = 0; i < durationInSlots; i++) {
+                    if (startIndex + i < timeSlots.length) {
+                      occupiedSlots.add(`${barber}-${timeSlots[startIndex + i]}`)
+                    }
                   }
                 } else if (isLunchBreak) {
                   cellContent = <span className="schedule-lunch-break">Obs: Intervalo de almoço</span>
@@ -203,7 +219,7 @@ function ScheduleView() {
                 }
 
                 return (
-                  <div key={`${barber}-${time}`} className={cellClasses}>
+                  <div key={slotKey} className={cellClasses}>
                     {cellContent}
                   </div>
                 )

@@ -1,0 +1,17 @@
+.page-container {
+  padding: 24px;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  margin: 16px;
+}
+.page-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.page-description {
+  color: var(--muted-text-color);
+  margin-bottom: 16px;
+}

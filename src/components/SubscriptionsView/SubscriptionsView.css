@@ -27,8 +27,17 @@
   font-weight: bold;
 }
 
+.subscriptions-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
 .subscriptions-search-wrapper {
   position: relative;
+  flex-grow: 1; /* Allow search to grow */
+  min-width: 200px; /* Minimum width for search input */
 }
 
 .subscriptions-search-icon {
@@ -52,6 +61,32 @@
 
 .subscriptions-search-input:focus {
   outline: none;
+  border-color: var(--dinastia-gold);
+}
+
+.subscriptions-filter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.subscriptions-filter-button {
+  background-color: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.875rem;
+}
+
+.subscriptions-filter-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.subscriptions-filter-button.active {
+  background-color: var(--dinastia-gold);
+  color: var(--dinastia-dark);
   border-color: var(--dinastia-gold);
 }
 
@@ -110,11 +145,26 @@
 }
 
 .badge-active {
-  background-color: #22c55e; /* Green */
+  background-color: var(--success-color); /* Green */
   color: white;
 }
 
 .badge-inactive {
   background-color: #6b7280; /* Gray */
+  color: white;
+}
+
+.badge-paid {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.badge-overdue {
+  background-color: var(--destructive-color);
+  color: white;
+}
+
+.badge-none {
+  background-color: #6b7280;
   color: white;
 }

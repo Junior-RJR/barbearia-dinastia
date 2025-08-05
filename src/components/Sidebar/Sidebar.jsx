@@ -186,6 +186,25 @@ const BoxIcon = () => (
     <path d="M12 22V12"></path>
   </svg>
 )
+const LayoutDashboardIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="icon"
+  >
+    <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+    <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+    <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+    <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+  </svg>
+)
 
 function Sidebar({ onNavigate }) {
   return (
@@ -193,15 +212,19 @@ function Sidebar({ onNavigate }) {
       <div className="sidebar-content">
         <nav className="sidebar-nav">
           <div className="sidebar-section-title">PÁGINAS:</div>
+          <a href="#" onClick={() => onNavigate("dashboard")} className="sidebar-nav-item">
+            <LayoutDashboardIcon className="sidebar-icon" />
+            Dashboard
+          </a>
           <a href="#" onClick={() => onNavigate("schedule")} className="sidebar-nav-item">
             <CalendarDaysIcon className="sidebar-icon" />
             Agenda
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("clients")} className="sidebar-nav-item">
             <UsersIcon className="sidebar-icon" />
             Cadastros
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("packages")} className="sidebar-nav-item">
             <Package2Icon className="sidebar-icon" />
             Pacotes
           </a>
@@ -209,19 +232,19 @@ function Sidebar({ onNavigate }) {
             <UsersIcon className="sidebar-icon" />
             Assinaturas
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("products")} className="sidebar-nav-item">
             <ShoppingCartIcon className="sidebar-icon" />
             Produtos
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("financial")} className="sidebar-nav-item">
             <DollarSignIcon className="sidebar-icon" />
             Financeiro
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("marketing")} className="sidebar-nav-item">
             <TrendingUpIcon className="sidebar-icon" />
             Marketing
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("settings")} className="sidebar-nav-item">
             <BoxIcon className="sidebar-icon" />
             Configurações
           </a>
@@ -229,35 +252,35 @@ function Sidebar({ onNavigate }) {
             <ClipboardListIcon className="sidebar-icon" />
             Minhas Comissões
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("graphic-reports")} className="sidebar-nav-item">
             <BarChartIcon className="sidebar-icon" />
             Relatórios Gráficos
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("statistical-reports")} className="sidebar-nav-item">
             <BarChartIcon className="sidebar-icon" />
             Relatórios Estatístico
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("purchases")} className="sidebar-nav-item">
             <ShoppingCartIcon className="sidebar-icon" />
             Compras
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("accounts-payable")} className="sidebar-nav-item">
             <CreditCardIcon className="sidebar-icon" />
             Contas à Pagar
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("all-sales")} className="sidebar-nav-item">
             <ClipboardListIcon className="sidebar-icon" />
             Todas as Vendas
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("simple-commissions")} className="sidebar-nav-item">
             <DollarSignIcon className="sidebar-icon" />
             Comissões Simples
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("complete-commissions")} className="sidebar-nav-item">
             <DollarSignIcon className="sidebar-icon" />
             Comissões Completa
           </a>
-          <a href="#" className="sidebar-nav-item">
+          <a href="#" onClick={() => onNavigate("cash-registers")} className="sidebar-nav-item">
             <BoxIcon className="sidebar-icon" />
             Caixas
           </a>

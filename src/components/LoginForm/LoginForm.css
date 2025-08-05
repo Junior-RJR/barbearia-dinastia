@@ -67,7 +67,7 @@
 }
 
 .login-error {
-  color: #ef4444; /* Red for destructive */
+  color: var(--destructive-color); /* Red for destructive */
   font-size: 0.875rem; /* text-sm */
 }
 

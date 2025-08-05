@@ -3,7 +3,7 @@
 import { useState } from "react"
 import "./LoginForm.css"
 import { loginUser } from "../../lib/mock-data"
-import logoDinastia from "../../images/logo-dinastia.png";
+import logoDinastia from "../../images/logo-dinastia.png" // Import the image
 
 function LoginForm({ onLoginSuccess }) {
   const [username, setUsername] = useState("")

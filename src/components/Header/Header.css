@@ -310,6 +310,6 @@
 }
 
 .header-dropdown-item-logout:hover {
-  background-color: #ef4444; /* destructive */
+  background-color: var(--destructive-color); /* destructive */
   color: white;
 }
